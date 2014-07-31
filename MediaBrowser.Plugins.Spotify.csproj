@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FBB349E-FC17-49CE-8B80-0A22C4E1FA8A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MediaBrowser.Plugins.Spotify</RootNamespace>
+    <AssemblyName>MediaBrowser.Plugins.Spotify</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MediaBrowser.Common">
+      <HintPath>packages\MediaBrowser.Common.3.0.332\lib\net45\MediaBrowser.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="MediaBrowser.Controller">
+      <HintPath>packages\MediaBrowser.Server.Core.3.0.332\lib\net45\MediaBrowser.Controller.dll</HintPath>
+    </Reference>
+    <Reference Include="MediaBrowser.Model">
+      <HintPath>packages\MediaBrowser.Common.3.0.332\lib\net45\MediaBrowser.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>packages\ServiceStack.Common.4.0.11\lib\net40\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>packages\ServiceStack.Interfaces.4.0.11\lib\net40\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>packages\ServiceStack.Text.4.0.11\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\AlbumService.cs" />
+    <Compile Include="Configuration\PluginConfiguration.cs" />
+    <Compile Include="Dto\AlbumDto.cs" />
+    <Compile Include="Embedded\EmbeddedAssembly.cs" />
+    <Compile Include="Embedded\EmbeddedResource.cs" />
+    <Compile Include="Managed\Entities\Album.cs" />
+    <Compile Include="Managed\Entities\Artist.cs" />
+    <Compile Include="Managed\Entities\Image.cs" />
+    <Compile Include="Managed\Entities\Playlist.cs" />
+    <Compile Include="Managed\Entities\Search.cs" />
+    <Compile Include="Managed\Entities\TopList.cs" />
+    <Compile Include="Managed\Entities\Track.cs" />
+    <Compile Include="Managed\Entities\User.cs" />
+    <Compile Include="Managed\Helpers\Functions.cs" />
+    <Compile Include="Managed\Manager.cs" />
+    <Compile Include="Managed\PlaylistManager.cs" />
+    <Compile Include="Managed\Session.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_album.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_albumbrowsing.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_artist.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_artistbrowsing.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_errors.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_imagehandling.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_inbox.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_links.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_playlist.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_search.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_sessions.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_toplisthandling.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_track.cs" />
+    <Compile Include="Managed\Wrapper\libspotify_user.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerEntryPoint.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embedded\spotify_appkey.key" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Embedded\libspotify.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
